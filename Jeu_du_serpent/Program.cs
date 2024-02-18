@@ -1,128 +1,61 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
+using Jeu_du_serpent;
 
-Console.WriteLine("Joueur 1, Entrez votrez nom :");
-string player1 = Console.ReadLine();
-
-Console.WriteLine("Joueur 2, Entrez votre nom :");
-string player2 = Console.ReadLine();
-
-int nombreDeCases = 50;
-string replay = "oui";
-
-while (replay == "oui")
+namespace MyApp // Note: actual namespace depends on the project name.
 {
-    int player1position = 0;
-    int player2position = 0;
-
-    while (true)
+    internal class Program
     {
-        player1position = PlayGame(player1, player1position);
-
-        if (player1position == nombreDeCases)
+        static void Main(string[] args)
         {
-            announcePosition(player1, player1position);
-            winner(player1);
-            break;
-        }
-        else
-        {
-            announcePosition(player1, player1position);
-        }
+            Console.WriteLine("Joueur 1, Entrez votrez nom :");
+            Player player1 = new Player(Console.ReadLine());
 
-        player2position = PlayGame(player2, player2position);
-        if (player2position == nombreDeCases)
-        {
-            announcePosition(player2, player2position);
-            winner(player2);
-            break;
-        }
-        else
-        {
-            announcePosition(player2, player2position);
+            Console.WriteLine("Joueur 2, Entrez votre nom :");
+            Player player2 = new Player(Console.ReadLine());
 
-        }
+            string replay = "oui";
 
-    }
+            while (replay == "oui")
+            {
+                player1.PlayerPosition = 0;
+                player2.PlayerPosition = 0;
 
-    Console.WriteLine("\nVoulez-vous jouer une nouvelle partie ? oui ? non ?");
-    replay = Console.ReadLine();
-
-}
-Console.WriteLine("\n\n\n\t\t\t\t\t\t\tGAME OVER");
-
-
-
-static int PlayGame(string player, int position)
-{
-    int nombreDeCases = 50;
-    if (position < nombreDeCases)
-    {
-        Random random = new Random();
-        int diceRoll = random.Next(1, 7);
-        position += diceRoll;
-        Console.WriteLine("\n\n\n" + player + " ,appuyez sur une touche pour lancer le dé");
-        string lancerDeDes = Console.ReadLine();
-
-
-        Console.WriteLine("\n" + player + " lance le dé et a fait un " + diceRoll);
-
-        if (position > nombreDeCases)
-        {
-            position = 25;
-            Console.WriteLine("Désolé " + player + " vous repartez en case " + position);
-        }
-
-
-        switch (position)
-        {
-            case 37:
+                while (true)
                 {
-                    Console.WriteLine("\n CASE PIEGE !!!! vous repartez en case 12");
-                    position = 12;
-                    break;
+                    player1.PlayerPosition = Gameboard.PlayGame(player1);
+
+                    if (player1.PlayerPosition == Gameboard.TotalSquares)
+                    {
+                        player1.AnnouncePosition();
+                        player2.AnnounceWinner();
+                        break;
+                    }
+                    else
+                    {
+                        player1.AnnouncePosition();
+                    }
+
+
+                    player2.PlayerPosition = Gameboard.PlayGame(player2);
+                    if (player2.PlayerPosition == Gameboard.TotalSquares)
+                    {
+                        player2.AnnouncePosition();
+                        player2.AnnounceWinner();
+                        break;
+                    }
+                    else
+                    {
+                        player2.AnnouncePosition();
+
+                    }
+
                 }
-            case 14:
-                {
-                    Console.WriteLine("\n CASE PIEGE !!!! vous repartez en case 5");
-                    position = 5;
-                    break;
-                }
-            case 46:
-                {
-                    Console.WriteLine("\n CASE PIEGE !!!! vous repartez en case 33");
-                    position = 33;
-                    break;
-                }
-            case 20:
-                {
-                    Console.WriteLine("\n CASE BONUS !!!! vous foncez en case 35");
-                    position = 35;
-                    break;
-                }
-            case 31:
-                {
-                    Console.WriteLine("\n CASE BONUS !!!! vous foncez en case 43");
-                    position = 43;
-                    break;
-                }
-            case 2:
-                {
-                    Console.WriteLine("\n CASE BONUS !!!! vous foncez en case 17");
-                    position = 17;
-                    break;
-                }
+
+                Console.WriteLine("\nVoulez-vous jouer une nouvelle partie ? oui ? non ?");
+                replay = Console.ReadLine();
+
+            }
+            Console.WriteLine("\n\n\n\t\t\t\t\tGAME OVER");
         }
     }
-    return position;
-}
-
-static void announcePosition(string player, int position)
-{
-    Console.WriteLine("\n" + player + " est désormais en case " + position);
-}
-
-static void winner(string player)
-{
-    Console.WriteLine("\n\n\nBRAVO " + player + " vous avez gagné !!!");
-
 }
