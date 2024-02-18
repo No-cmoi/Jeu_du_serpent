@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1706.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeu_du_serpent", "Jeu_du_serpent\Jeu_du_serpent.csproj", "{9725771B-6BB8-4C09-92F4-CA9CE6FF3E0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeu_du_serpent.UniTests", "Jeu_du_serpent.UniTests\Jeu_du_serpent.UniTests.csproj", "{3FEFBBDE-9EAD-46A2-B056-542184B8C7DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9725771B-6BB8-4C09-92F4-CA9CE6FF3E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9725771B-6BB8-4C09-92F4-CA9CE6FF3E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9725771B-6BB8-4C09-92F4-CA9CE6FF3E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEFBBDE-9EAD-46A2-B056-542184B8C7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEFBBDE-9EAD-46A2-B056-542184B8C7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEFBBDE-9EAD-46A2-B056-542184B8C7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEFBBDE-9EAD-46A2-B056-542184B8C7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

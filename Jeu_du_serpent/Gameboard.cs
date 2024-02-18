@@ -12,6 +12,7 @@ namespace Jeu_du_serpent
                 Random random = new Random();
                 int diceRoll = random.Next(1, 7);
                 player.PlayerPosition += diceRoll;
+
                 Console.WriteLine($"\n\n\n{player.Name} ,appuyez sur une touche pour lancer le dé");
                 string lancerDeDes = Console.ReadLine();
 
@@ -64,6 +65,13 @@ namespace Jeu_du_serpent
                             break;
                         }
                 }
+
+                if (player.PlayerPosition >= TotalSquares)
+                {
+                    player.AnnounceWinner();
+                    return TotalSquares;
+                }
+                
             }
             return player.PlayerPosition;
         }
